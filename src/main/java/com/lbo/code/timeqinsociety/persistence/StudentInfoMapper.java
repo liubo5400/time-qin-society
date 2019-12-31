@@ -1,6 +1,7 @@
 package com.lbo.code.timeqinsociety.persistence;
 
-import com.lbo.code.timeqinsociety.domain.RoleInfo;
+import com.lbo.code.timeqinsociety.domain.StudentInfo;
+import com.lbo.code.timeqinsociety.domain.TeacherInfo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -10,11 +11,11 @@ import java.util.List;
 
 @Repository
 @Mapper
-public interface SysRoleMapper extends BaseMapper<RoleInfo> {
+public interface StudentInfoMapper extends BaseMapper<StudentInfo> {
 
     @Select("select * from sys_role where name = #{name}")
-    RoleInfo selectByName(@Param("name") String name);
+    StudentInfo selectByName(@Param("name") String name);
 
     @Select("select * from sys_role where status = 'ENABLED'")
-    List<RoleInfo> selectRolesWitCanUse();
+    List<StudentInfo> selectRolesWitCanUse();
 }

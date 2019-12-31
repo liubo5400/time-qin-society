@@ -1,6 +1,5 @@
 package com.lbo.code.timeqinsociety.domain;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,14 +11,14 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
- * web用户
+ * 投诉意见
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Table(name = "web_user")
-public class WebUser {
+@Table(name = "complaint")
+public class Complaint {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

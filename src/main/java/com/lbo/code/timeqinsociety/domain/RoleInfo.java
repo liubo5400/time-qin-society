@@ -11,14 +11,14 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
- * 系统角色
+ * 角色信息
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Table(name = "sys_role")
-public class SysRole {
+@Table(name = "role_info")
+public class RoleInfo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

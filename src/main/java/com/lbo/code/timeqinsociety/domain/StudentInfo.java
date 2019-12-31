@@ -5,22 +5,31 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Date;
 
 /**
- * 系统用户
+ * 学员信息
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Table(name = "sys_user")
-public class SysUser {
+@Table(name = "student_info")
+public class StudentInfo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    private String level;
+
+    private Date lastModifyTime;
+
+    private String lastModifier;
+
+    private String remark;
+
+    @Transient
+    private UserInfo userInfo;
 }
