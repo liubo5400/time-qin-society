@@ -9,10 +9,12 @@ import com.lbo.code.timeqinsociety.web.RestException;
 import com.lbo.code.timeqinsociety.web.dto.req.LoginAdminReqDto;
 import com.lbo.code.timeqinsociety.web.dto.rsp.LoginAdminRspDto;
 import com.lbo.code.timeqinsociety.web.dto.rsp.base.ErrorCode;
-import com.lbo.code.timeqinsociety.web.dto.rsp.base.VoidRspDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 import java.util.Date;
@@ -21,7 +23,7 @@ import java.util.UUID;
 @Slf4j
 @RestController
 @RequestMapping(value = "/admin")
-public class LoginAdminController {
+public class SubjectAdminController {
 
     @Autowired
     private LoginService loginService;
@@ -29,7 +31,7 @@ public class LoginAdminController {
     @Autowired
     private UserService userService;
 
-    @PostMapping("/login")
+    @GetMapping("/login")
     public LoginAdminRspDto login(@Valid @RequestBody LoginAdminReqDto reqDto) {
         UserInfo userInfo = loginService.checkTeacherUsername(reqDto.getUsername());
         if (null == userInfo) {
@@ -47,12 +49,6 @@ public class LoginAdminController {
         return LoginAdminRspDto.builder().id(userInfo.getId())
                 .name(userInfo.getName()).headUrl(userInfo.getHeadUrl())
                 .token(token).build();
-    }
-
-    @GetMapping("logout")
-    public VoidRspDto logout(@Valid @RequestParam("token") String token){
-        RedisCache.deleteToken(token);
-        return new VoidRspDto();
     }
 
 }
