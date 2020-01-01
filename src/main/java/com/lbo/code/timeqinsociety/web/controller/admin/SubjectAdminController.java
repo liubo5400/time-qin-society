@@ -20,6 +20,10 @@ import javax.validation.Valid;
 import java.util.Date;
 import java.util.UUID;
 
+/**
+ * 课程相关
+ *
+ */
 @Slf4j
 @RestController
 @RequestMapping(value = "/admin")
