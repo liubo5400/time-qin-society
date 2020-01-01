@@ -1,6 +1,5 @@
 package com.lbo.code.timeqinsociety.domain;
 
-
 import com.lbo.code.timeqinsociety.domain.enums.UserStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
