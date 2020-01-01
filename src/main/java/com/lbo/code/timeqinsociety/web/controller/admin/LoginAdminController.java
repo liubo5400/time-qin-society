@@ -50,7 +50,7 @@ public class LoginAdminController {
     }
 
     @GetMapping("logout")
-    public VoidRspDto logout(@Valid @RequestParam("token") String token){
+    public VoidRspDto logout(@Valid @RequestParam("token") String token) {
         RedisCache.deleteToken(token);
         return new VoidRspDto();
     }
