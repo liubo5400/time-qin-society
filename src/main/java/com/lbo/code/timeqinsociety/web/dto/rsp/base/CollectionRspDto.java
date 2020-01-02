@@ -13,8 +13,4 @@ import java.util.List;
 public class CollectionRspDto<T> {
     private long total;
     private List<T> data = Lists.newArrayList();
-
-    public CollectionRspDto(long total) {
-        this.total = total;
-    }
 }

@@ -1,1 +1,44 @@
+spring:
+  application:
+    name: time-qin-society
+  profiles:
+    active: dev
+  datasource:
+    druid:
+      url: jdbc:mysql://127.0.0.1:33080/time_qin?useUnicode=true&characterEncoding=UTF8&autoReconnect=true&zeroDateTimeBehavior=convertToNull
+      username: root
+      password: root
+      driver-class-name: com.mysql.jdbc.Driver
+      initial-size: 1
+      max-active: 20
+      min-idle: 3
+      max-wait: 60000
 
+mybatis:
+  type-aliases-package: com.lbo.code.timeqinsociety.domain
+  mapper-locations: classpath:mapper/*.xml
+  type-handlers-package: com.lbo.code.timeqinsociety.persistence.mybatis.typehandler
+  configuration:
+    map-underscore-to-camel-case: true
+
+mapper:
+  mappers:
+    - com.lbo.code.timeqinsociety.persistence.BaseMapper
+  not-empty: false
+  identity: MYSQL
+
+pagehelper:
+  helperDialect: mysql
+  reasonable: false
+  supportMethodsArguments: true
+  params: count=countSql
+
+logging:
+  level:
+    org.hibernate.SQL: debug
+    org.hibernate.type.descriptor.sql.BasicBinder: trace
+    com.lbo.code.timeqinsociety: debug
+  file: /home/logs/app.log
+
+server:
+  port: 8080

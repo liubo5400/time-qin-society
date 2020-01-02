@@ -40,6 +40,7 @@ public class AppExceptionHandler {
             }
         }
 
+
         ErrorRspDto erb = null;
         if (ex instanceof HttpRequestMethodNotSupportedException) {
             erb = new ErrorRspDto(ErrorCode.ERROR_METHOD);
