@@ -1,16 +1,16 @@
 package com.lbo.code.timeqinsociety.service;
 
-import com.lbo.code.timeqinsociety.domain.StudentInfo;
-import com.lbo.code.timeqinsociety.domain.TeacherInfo;
-import com.lbo.code.timeqinsociety.domain.UserInfo;
+import com.lbo.code.timeqinsociety.domain.Student;
+import com.lbo.code.timeqinsociety.domain.SysUser;
+import com.lbo.code.timeqinsociety.domain.Teacher;
 
 public interface LoginService {
 
-    StudentInfo studentLogin(String username, String password);
+    Student studentLogin(String username, String password);
 
-    TeacherInfo teacherWXLogin(String openId);
+    Teacher teacherWXLogin(String openId);
 
-    StudentInfo studentWXLogin(String openId);
+    Student studentWXLogin(String openId);
 
-    UserInfo checkTeacherUsername(String username);
+    SysUser checkTeacherUsername(String username);
 }

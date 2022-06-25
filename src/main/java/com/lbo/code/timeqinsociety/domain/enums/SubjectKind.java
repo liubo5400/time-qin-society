@@ -1,14 +1,13 @@
 package com.lbo.code.timeqinsociety.domain.enums;
 
-public enum UserStatus {
+public enum SubjectKind {
 
-    ENABLED("可用"),
-    DISABLED("已停用"),
-    DELETE("已删除");
+    SINGLE("一对一"),
+    TERM("小组课");
 
     private final String description;
 
-    UserStatus(String description) {
+    SubjectKind(String description) {
         this.description = description;
     }
 

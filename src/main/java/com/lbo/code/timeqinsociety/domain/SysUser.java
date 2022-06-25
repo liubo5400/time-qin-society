@@ -1,6 +1,7 @@
 package com.lbo.code.timeqinsociety.domain;
 
-import com.lbo.code.timeqinsociety.domain.enums.UserStatus;
+import com.lbo.code.timeqinsociety.domain.enums.Status;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -19,43 +20,41 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Table(name = "user_info")
-public class UserInfo {
+@Table(name = "sys_user")
+public class SysUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String type;
-
-    private Long userId;
-
+    @ApiModelProperty(value = "账号")
     private String username;
 
+    @ApiModelProperty(value = "密码")
     private String password;
 
+    @ApiModelProperty(value = "姓名")
     private String name;
 
+    @ApiModelProperty(value = "头像")
     private String headUrl;
 
+    @ApiModelProperty(value = "手机号")
     private String mobile;
 
+    @ApiModelProperty(value = "邮箱")
     private String email;
 
-    private String weixin;
+    @ApiModelProperty(value = "状态")
+    private Status status;
 
-    private String openId;
-
-    private String wxName;
-
-    private String wxHeadUrl;
-
-    private UserStatus status;
-
+    @ApiModelProperty(value = "创建时间")
     private Date createTime;
 
+    @ApiModelProperty(value = "创建人")
     private String creator;
 
+    @ApiModelProperty(value = "最后登录时间")
     private Date lastLoginTime;
 
 }

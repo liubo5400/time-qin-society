@@ -2,7 +2,10 @@ package com.lbo.code.timeqinsociety.web.controller.admin;
 
 import com.google.common.collect.Lists;
 import com.lbo.code.timeqinsociety.domain.Subject;
+import com.lbo.code.timeqinsociety.domain.SubjectPlan;
+import com.lbo.code.timeqinsociety.web.dto.req.QuerySubjectPlanReqDto;
 import com.lbo.code.timeqinsociety.web.dto.req.QuerySubjectReqDto;
+import com.lbo.code.timeqinsociety.web.dto.req.SaveSubjectPlanReqDto;
 import com.lbo.code.timeqinsociety.web.dto.req.SaveSubjectReqDto;
 import com.lbo.code.timeqinsociety.web.dto.rsp.base.CollectionRspDto;
 import com.lbo.code.timeqinsociety.web.dto.rsp.base.VoidRspDto;
@@ -14,34 +17,34 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 /**
- * 课程相关
+ * 课程计划预约相关
  */
 @Slf4j
-@Api(tags = "课程管理相关")
+@Api(tags = "课程计划预约管理相关")
 @RestController
-@RequestMapping(value = "/admin/subject")
-public class SubjectAdminController {
+@RequestMapping(value = "/admin/subject/plan")
+public class SubjectPlanAdminController {
 
 
-    @ApiOperation(value = "课程列表", notes = "")
+    @ApiOperation(value = "课程计划预约列表", notes = "")
     @GetMapping("/list")
-    public CollectionRspDto<Subject> list(@Valid @RequestBody QuerySubjectReqDto reqDto) {
+    public CollectionRspDto<SubjectPlan> list(@Valid @RequestBody QuerySubjectPlanReqDto reqDto) {
         return new CollectionRspDto<>(0, Lists.newArrayList());
     }
 
-    @ApiOperation(value = "保存课程", notes = "")
+    @ApiOperation(value = "保存课程计划预约", notes = "")
     @PostMapping
-    public VoidRspDto save(@Valid @RequestBody SaveSubjectReqDto reqDto) {
+    public VoidRspDto save(@Valid @RequestBody SaveSubjectPlanReqDto reqDto) {
         return new VoidRspDto();
     }
 
-    @ApiOperation(value = "课程详情", notes = "")
+    @ApiOperation(value = "课程计划预约详情", notes = "")
     @GetMapping("/detail/{id}")
-    public Subject detail(@PathVariable(value = "id") Long id) {
-        return Subject.builder().build();
+    public SubjectPlan detail(@PathVariable(value = "id") Long id) {
+        return SubjectPlan.builder().build();
     }
 
-    @ApiOperation(value = "操作课程", notes = "")
+    @ApiOperation(value = "操作课程计划预约", notes = "")
     @PostMapping("/operate/{id}")
     public VoidRspDto operate(@PathVariable(value = "id") Long id) {
         return new VoidRspDto();

@@ -1,10 +1,19 @@
 package com.lbo.code.timeqinsociety.service;
 
-import com.lbo.code.timeqinsociety.domain.TeacherInfo;
+import com.github.pagehelper.Page;
+import com.lbo.code.timeqinsociety.domain.Teacher;
+
+import java.util.Map;
 
 public interface TeacherService {
 
-    Long create(TeacherInfo teacherInfo);
+    Page<Teacher> queryPage(Map<String, Object> params, int start, int length);
 
-    void update(TeacherInfo teacherInfo);
+    Teacher get(Long id);
+
+    Long create(Teacher teacher);
+
+    void update(Teacher teacher);
+
+    void delete(Long id);
 }

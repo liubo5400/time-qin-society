@@ -1,25 +1,36 @@
 spring:
   application:
-    name: time-qin-society
+    name: time-qin
   profiles:
     active: dev
   datasource:
     druid:
-      url: jdbc:mysql://127.0.0.1:33080/time_qin?useUnicode=true&characterEncoding=UTF8&autoReconnect=true&zeroDateTimeBehavior=convertToNull
+      url: jdbc:mysql://127.0.0.1:3306/time_qin?useUnicode=true&characterEncoding=UTF8&autoReconnect=true&zeroDateTimeBehavior=convertToNull
       username: root
-      password: root
+      password: liubo0121
       driver-class-name: com.mysql.jdbc.Driver
       initial-size: 1
       max-active: 20
       min-idle: 3
       max-wait: 60000
 
-mybatis:
-  type-aliases-package: com.lbo.code.timeqinsociety.domain
-  mapper-locations: classpath:mapper/*.xml
-  type-handlers-package: com.lbo.code.timeqinsociety.persistence.mybatis.typehandler
-  configuration:
-    map-underscore-to-camel-case: true
+server:
+  port: 9080
+
+# sa-token配置
+sa-token:
+  # token名称 (同时也是cookie名称)
+  token-name: satoken
+  # token有效期，单位s 默认30天, -1代表永不过期
+  timeout: 60
+  # token临时有效期 (指定时间内无操作就视为token过期) 单位: 秒
+  activity-timeout: -1
+  # 是否允许同一账号并发登录 (为true时允许一起登录, 为false时新登录挤掉旧登录)
+  allow-concurrent-login: false
+  # 在多人登录同一账号时，是否共用一个token (为true时所有登录共用一个token, 为false时每次登录新建一个token)
+  is-share: false
+  # token风格
+  token-style: uuid
 
 mapper:
   mappers:
@@ -33,12 +44,18 @@ pagehelper:
   supportMethodsArguments: true
   params: count=countSql
 
+mybatis:
+  type-aliases-package: com.lbo.code.timeqinsociety.domain
+  mapper-locations: classpath:mapper/*.xml
+  #type-handlers-package: com.lbo.code.timeqinsociety.persistence.mybatis.typehandler
+  configuration:
+    map-underscore-to-camel-case: true
+
 logging:
   level:
+    root: info
+    org.springframework.boot.autoconfigure: error
     org.hibernate.SQL: debug
     org.hibernate.type.descriptor.sql.BasicBinder: trace
-    com.lbo.code.timeqinsociety: debug
-  file: /home/logs/app.log
-
-server:
-  port: 8080
+    com.netease.house: debug
+  file: Documents/house-git/logs/${spring.application.name}.log
